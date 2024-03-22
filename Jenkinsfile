@@ -1,9 +1,6 @@
 pipeline {
     agent any
-
-    
-    
-    
+ 
     stages {
         stage('Cloning') {
             steps {
@@ -20,7 +17,6 @@ pipeline {
                 sh 'mvn install'
             }
             
-
         }
         
         
@@ -32,13 +28,14 @@ pipeline {
 
        }
        
-       
-       
+        
        stage('Pushing') {
            steps {
                echo 'pushing that image to the DockerHub'
-               sh 'sudo docker login -u rohitwasnik1112 -p Guess1112'
-               sh 'sudo docker push rohitwasnik1112/star-insurance'
+               withCredentilas([usernamePassword(credentialsId: 'Docker-pass', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                  sh 'sudo docker login -u ${env.USERNAME} -p ${env.PASSWORD}'
+                  sh 'sudo docker push rohitwasnik1112/star-insurance'
+               }
             }
 
          }
