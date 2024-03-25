@@ -5,7 +5,7 @@ pipeline {
         stage('Cloning') {
             steps {
                 echo 'Cloining the code from the github repository.'
-                git 'https://github.com/Rohit2k00/Insurence-project.git'
+                git 'https://github.com/radharamya125/insurance-proj.git'
 
             }
         }
