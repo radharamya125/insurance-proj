@@ -27,13 +27,7 @@ pipeline {
 
        }
 
-    stage('Image Creating') {
-           steps {
-                echo 'creating an image using docker'
-                sh 'sudo docker build -t radharamya/insurance-project:1.0 .'
-           }
-
-       }
+   
 
     stage('Login') {
            steps {
@@ -45,7 +39,15 @@ pipeline {
 
        }
 
-    stage('Pushing') {
+     stage('Image Creating') {
+           steps {
+                echo 'creating an image using docker'
+                sh 'sudo docker build -t radharamya/insurance-project:1.0 .'
+           }
+
+       }
+
+     stage('Pushing') {
            steps {
                 echo 'pushing the image into dockerhub'
                 sh 'sudo docker push radharamya/insurance-project:1.0'
