@@ -23,7 +23,7 @@ pipeline {
        stage('Image Creating') {
            steps {
                 echo 'creating an image using docker'
-                sh 'sudo docker build -t rohitwasnik1112/star-insurance .'
+                sh 'sudo docker build -t radharamya/insurance-project:1.0 .'
            }
 
        }
