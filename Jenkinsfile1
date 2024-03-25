@@ -18,15 +18,16 @@ pipeline {
             
         }
 
-    
-       stage('Image Creating') {
+
+    stage('Publish TestNg report') {
            steps {
-                echo 'creating an image using docker'
-                sh 'sudo docker build -t radharamya/insurance-project:1.0 .'
+                echo 'Genrate HTML report using TestNg'
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/jenkins/workspace/Insurance-Project/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
            }
 
        }
 
+    
 
 
 
