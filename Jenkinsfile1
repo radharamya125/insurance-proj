@@ -27,26 +27,28 @@ pipeline {
 
        }
 
-   
-
-    stage('Login') {
-           steps {
-                echo 'Login into the Dockerhub'
-                withCredentials([usernamePassword(credentialsId: 'Dockerlogin', passwordVariable: 'dockerhub-password', usernameVariable: 'dockerhub-user')]) {
-                sh "sudo docker login -u ${env.dockerhub_user} -p ${env.dockerhub_password}"
-                    }
-
-           }
-
-       }
-
-     stage('Image Creating') {
+    stage('Image Creating') {
            steps {
                 echo 'creating an image using docker'
                 sh 'sudo docker build -t radharamya/insurance-project:1.0 .'
            }
 
        }
+
+   
+
+    stage('Login') {
+           steps {
+                echo 'Login into the Dockerhub'
+                withCredentials([usernamePassword(credentialsId: 'Dockerlogin', passwordVariable: 'dockerhub-password', usernameVariable: 'dockerhub-user')]) {
+                sh "sudo docker login -u ${env.dockerhub-user} -p ${env.dockerhub-password}"
+                    }
+
+           }
+
+       }
+
+     
 
      stage('Pushing') {
            steps {
