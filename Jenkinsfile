@@ -14,7 +14,7 @@ pipeline {
         stage('Building') {
             steps {
                 echo 'Building the given code by using maven'
-                sh 'mvn install'
+                sh 'mvn package'
             }
             
         }
