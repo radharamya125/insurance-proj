@@ -9,5 +9,20 @@ pipeline {
 
             }
         }
+
+    stage('Building') {
+            steps {
+                echo 'package the given code by using maven'
+                sh 'mvn clean package'
+            }
+            
+        }
+
+
+
+
+
+
+
 }
 }
