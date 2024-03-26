@@ -64,7 +64,7 @@ pipeline {
     stage('Deploying') {
             steps {
                 echo 'Deploying that application to the production server'
-                sh 'ansible-playbook /home/ubuntu/Insurence-project/playbook.yaml'
+                sh 'ansible-playbook /var/lib/jenkins/workspace/Insurance-Project/playbook.yaml'
             }
         }
 
