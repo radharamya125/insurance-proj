@@ -30,7 +30,7 @@ pipeline {
     stage('Image Creating') {
            steps {
                 echo 'creating an image using docker'
-                sh 'sudo docker build -t radharamya/insurance-project:1.0 .'
+                sh 'docker build -t radharamya/insurance-project:1.0 .'
            }
 
        }
@@ -43,7 +43,7 @@ pipeline {
            steps {
                 echo 'Login into the Dockerhub'
                 withCredentials([usernamePassword(credentialsId: 'Dockerlogin', passwordVariable: 'PASSWORD', usernameVariable: 'USER')]) {
-                sh "sudo docker login -u ${env.USER} -p ${env.PASSWORD}"
+                sh "docker login -u ${env.USER} -p ${env.PASSWORD}"
                
                     }
 
@@ -56,7 +56,7 @@ pipeline {
      stage('Pushing') {
            steps {
                 echo 'pushing the image into dockerhub'
-                sh 'sudo docker push radharamya/insurance-project:1.0'
+                sh 'docker push radharamya/insurance-project:1.0'
            }
 
        }
