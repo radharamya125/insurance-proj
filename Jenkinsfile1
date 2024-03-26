@@ -61,10 +61,10 @@ pipeline {
 
        }
 
-    stage('Deploying') {
+    stage('Ansible config and Deploying') {
             steps {
                 echo 'Deploying that application to the production server'
-                sh 'ansible-playbook /var/lib/jenkins/workspace/Insurance-Project/playbook.yaml'
+               ansiblePlaybook credentialsId: '1825da71-9d8b-446f-8f5b-aa18dbb23bc5', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'playbook.yaml', vaultTmpPath: ''
             }
         }
 
